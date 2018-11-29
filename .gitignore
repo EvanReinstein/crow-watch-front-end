@@ -5,3 +5,9 @@ npm-debug.*
 *.p12
 *.key
 *.mobileprovision
+
+
+#Amplify
+amplify/#current-cloud-backend
+amplify/backend
+aws-exports.js

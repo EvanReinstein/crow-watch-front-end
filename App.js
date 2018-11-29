@@ -1,6 +1,12 @@
 import React from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 
+import { withAuthenticator } from 'aws-amplify-react-native'
+
+import Amplify from '@aws-amplify/core';
+import config from './aws-exports';
+Amplify.configure(config);
+
 class App extends React.Component {
   render() {
     return (
@@ -21,4 +27,5 @@ const styles = StyleSheet.create({
 });
 
 AppRegistry.registerComponent('Crow Watch', () => App);
-export default App;
+
+export default withAuthenticator(App);
