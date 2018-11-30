@@ -13,12 +13,12 @@ export default class AppContainer extends Component {
       {
         key: 'home',
         title: 'Home',
-        icon: 'view-day',
+        icon: 'whatshot',
       },
       {
         key: 'profile',
-        title: 'Profile',
-        icon: 'account-circle',
+        title: 'Crow Watch',
+        icon: 'timer',
       }
     ]
   };
