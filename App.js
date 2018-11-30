@@ -1,18 +1,36 @@
 import React from 'react';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import AppContainer from './AppContainer';
 
+// React Native Paper //
+import {DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+
+// AWS AMPLIFY //
+////////////////
 import { withAuthenticator } from 'aws-amplify-react-native'
 
 import Amplify from '@aws-amplify/core';
 import config from './aws-exports';
 Amplify.configure(config);
+////////////////
+
+
+const defaultTheme = {
+  ...DefaultTheme,
+  roundness: 4,
+  colors: {
+    ...DefaultTheme.colors,
+    primary: '#A7B1B2',
+    accent: '#A9F6FF',
+  }
+};
 
 class App extends React.Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-      </View>
+      <PaperProvider theme={defaultTheme}>
+        <AppContainer />
+      </PaperProvider>
     );
   }
 }
