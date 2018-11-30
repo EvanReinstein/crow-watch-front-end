@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {BottomNavigation} from 'react-native-paper';
+import { View } from 'react-native';
+import { BottomNavigation, Appbar} from 'react-native-paper';
 ////////////////
 // Components //
 ////////////////
@@ -30,8 +31,10 @@ export default class AppContainer extends Component {
     profile: Profile});
 
   render() {
-    return (<BottomNavigation
+    return (
+      <BottomNavigation
       navigationState={this.state}
-      onIndexChange={this._handleIndexChange} renderScene={this._renderScene}/>);
+      onIndexChange={this._handleIndexChange} renderScene={this._renderScene}/>
+    );
   }
 }

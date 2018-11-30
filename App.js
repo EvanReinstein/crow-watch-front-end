@@ -3,7 +3,7 @@ import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import AppContainer from './AppContainer';
 
 // React Native Paper //
-import {DefaultTheme, Provider as PaperProvider } from 'react-native-paper';
+import {DefaultTheme, Appbar, Provider as PaperProvider } from 'react-native-paper';
 
 // AWS AMPLIFY //
 ////////////////
@@ -26,9 +26,20 @@ const defaultTheme = {
 };
 
 class App extends React.Component {
+  _onMore = () => {
+    
+  }
+
   render() {
     return (
       <PaperProvider theme={defaultTheme}>
+        <Appbar.Header>
+          <Appbar.Content
+            title="Crow Watch"
+          />
+          <Appbar.Action icon="more-vert" onPress={this._onMore} />
+        </Appbar.Header>
+
         <AppContainer />
       </PaperProvider>
     );
