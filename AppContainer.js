@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {BottomNavigation} from 'react-native-paper';
-/////////////
-// Components
-/////////////
+////////////////
+// Components //
+////////////////
 import Home from './src/components/Home';
 import Profile from './src/components/Profile';
 
