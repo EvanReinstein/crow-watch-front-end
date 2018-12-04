@@ -5,7 +5,7 @@ import { BottomNavigation, Appbar} from 'react-native-paper';
 // Components //
 ////////////////
 import Home from './src/components/Home';
-import Profile from './src/components/Profile';
+import Profile from './src/components/profile-components/Profile';
 
 export default class AppContainer extends Component {
   state = {

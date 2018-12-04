@@ -27,7 +27,7 @@ const defaultTheme = {
 
 class App extends React.Component {
   _onMore = () => {
-    
+
   }
 
   render() {
@@ -57,4 +57,6 @@ const styles = StyleSheet.create({
 
 AppRegistry.registerComponent('Crow Watch', () => App);
 
-export default withAuthenticator(App);
+export default withAuthenticator(App,
+  includeGreetings = false 
+);
