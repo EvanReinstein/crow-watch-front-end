@@ -50,6 +50,12 @@ class Profile extends Component {
       <ScrollView style={styles.container}>
         <Text style={styles.textHeader}>Welcome to Crow Watch</Text>
         <View>
+          <Text style={styles.textSubHeader}>In Crow Watch 1.0, we will work to collect photos of Crows.
+                Using these photos we can build a database of photos, which
+                will eventually be used to train the app to recognize Crows.
+          </Text>
+        </View>
+        <View>
           <Photos photos={this.state.photos} photoInfo={this.state.photoInfo} />
         </View>
       </ScrollView>
@@ -63,9 +69,18 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   textHeader: {
+    textAlign: 'center',
     fontFamily: 'American Typewriter',
-    fontSize: 20,
+    fontSize: 30,
     marginBottom: 20
+  },
+  textSubHeader: {
+    fontSize: 20,
+    paddingLeft: 10,
+    paddingRight: 10,
+    fontFamily: 'American Typewriter',
+    textAlign: 'center',
+    marginBottom: 20,
   }
 })
 
