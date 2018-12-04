@@ -11,3 +11,6 @@ npm-debug.*
 amplify/#current-cloud-backend
 amplify/backend
 aws-exports.js
+
+#Secrets
+config/*
