@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
 import { s3Bucket, identityPOOLID } from '../../../config/config';
 import Photos from './photos';
 
@@ -47,20 +47,26 @@ class Profile extends Component {
 
   render() {
     return(
-      <View>
-        <Text>Welcome to Crow Watch</Text>
-        <ScrollView>
+      <ScrollView style={styles.container}>
+        <Text style={styles.textHeader}>Welcome to Crow Watch</Text>
+        <View>
           <Photos photos={this.state.photos} photoInfo={this.state.photoInfo} />
-        </ScrollView>
-      </View>
+        </View>
+      </ScrollView>
     );
   }
 }
 
-
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 10,
+  },
+  textHeader: {
+    fontFamily: 'American Typewriter',
+    fontSize: 20,
+    marginBottom: 20
+  }
+})
 
 export default Profile;
-
-// {this.state.photos.map((photo, i) => {
-//   return <Image source={{uri: photo}} key={i} style={{width: 400, height: 400}}/>
-// })}

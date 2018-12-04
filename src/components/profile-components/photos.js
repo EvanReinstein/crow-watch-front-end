@@ -18,7 +18,3 @@ class Photos extends Component {
 }
 
 export default Photos;
-
-// {this.props.photos.map((photo, i) => {
-//   return <Image source={{uri: photo}} key={i} style={{width: 400, height: 400}}/>
-// })}
