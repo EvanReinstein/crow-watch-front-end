@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image } from 'react-native';
+import { View, Text, Image, ScrollView } from 'react-native';
 import { s3Bucket, identityPOOLID } from '../../config/config'
 
 // AWS Related Imports
@@ -19,38 +19,40 @@ class Profile extends Component {
   }
 
   componentWillMount() {
+    // Gets Photo Keys from S3 bucket
     Storage.list('')
       .then(res => {
         console.log(res);
-        let keys = res.map(photo => {
-          return photo.key;
+        // Get last char of photo key from List
+        let photoInfo = res.map(photo => {
+          let lastChar = photo.key[photo.key.length - 1];
+          console.log(lastChar);
+          // Use the last char to complete the fetch URL
+          fetch(`${s3Bucket}Photo%3A+${lastChar}`, {
+            headers: {
+              'Accept': 'application/json'
+            }
+          })
+          .then(result => {
+            let img = `data:image/png;base64,${result._bodyText}`
+            this.setState({ photos: [...this.state.photos, img] });
+          })
+          .catch(err => console.log(err))
+          return 'Fetch complete!';
         });
-        this.setState({ keys });
-        console.log(this.state.keys);
       })
       .catch(err => console.log(err));
-
-    fetch(`${s3Bucket}Photo%3A+1`, {
-      headers: {
-        'Accept': 'application/json'
-      }
-    })
-    .then(res => {
-      let img = `data:image/png;base64,${res._bodyText}`;
-      this.setState({ photos: [img] });
-    })
-    .catch(err => console.log(err))
   }
 
   render() {
     return(
       <View>
         <Text>Welcome to Crow Watch</Text>
-        <View>
+        <ScrollView>
           {this.state.photos.map((photo, i) => {
             return <Image source={{uri: photo}} key={i} style={{width: 400, height: 400}}/>
           })}
-        </View>
+        </ScrollView>
       </View>
     );
   }
