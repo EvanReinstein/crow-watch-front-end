@@ -8,9 +8,18 @@ class Photos extends Component {
       <View>
         {this.props.photoInfo.map((info, index) => {
           let photo = this.props.photos[index];
+          let base64Photo = photo.slice(22);
           let name = info.key;
           let date = info.lastModified.toDateString();
-          return <Photo name={name} photo={photo} date={date} key={name} removePhoto={this.props.removePhoto} />
+          return <Photo
+            name={name}
+            photo={photo}
+            date={date}
+            index={index}
+            key={index}
+            base64Photo={base64Photo}
+            removePhoto={this.props.removePhoto}
+            crowPhoto={this.props.crowPhoto} />
         })}
       </View>
     )

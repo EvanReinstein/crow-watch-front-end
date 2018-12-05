@@ -19,16 +19,42 @@ class Profile extends Component {
     photoInfo: []
   }
 
-  removePhoto(input) {
+  removePhoto(input, index) {
+    // Delete photo from S3
     Storage.remove(input)
-    .then(result => console.log(result))
+    .then(result => console.log(`Removed ${input} at index: ${index}`))
     .catch(err => console.log(err));
+    // filter out the deleted photo within state and then reset in order to re-render
     let photoInfo = this.state.photoInfo;
+    let photos = this.state.photos;
+    let newPhotos = photos.filter((photo, i) => i !== index)
     let newPhotoInfo = photoInfo.filter(photo => photo.key !== input)
-    this.setState({ photoInfo: newPhotoInfo })
+    this.setState({ photoInfo: newPhotoInfo, photos: newPhotos });
+    Alert.alert('Non-Crow photo removed');
   }
 
+  crowPhoto(name, input, index) {
+    // Send photo to s3 protected folder
+    Storage.put(name, input, {
+      level: 'protected',
+      contentType: 'image/png'
+    })
+    .then (result => console.log('Storage.put result is: ', result))
+    .catch(err => console.log(err));
+    // Remove photo from the public folder
+    Storage.remove(name)
+    .then(result => console.log(`Removed ${name} at index: ${index}`))
+    .catch(err => console.log(err));
+    // Remove photo/photoInfo from state and re-render page
+    let photoInfo = this.state.photoInfo;
+    let photos = this.state.photos;
+    let newPhotos = photos.filter((photo, i) => i !== index)
+    let newPhotoInfo = photoInfo.filter(photo => photo.key !== name)
+    this.setState({ photoInfo: newPhotoInfo, photos: newPhotos });
+    Alert.alert('Get that Crow Data!');
+  }
 
+  // Function to fetch data on initial load.
   fetchData = () => {
     // Gets Photo Keys from S3 bucket
     Storage.list('')
@@ -37,6 +63,7 @@ class Profile extends Component {
         let photos = res.map(photo => {
           const re = /[0-9]/g;
           let numbers = photo.key.match(re).join('');
+          console.log(numbers);
           // Use the numbers to complete the fetch URL
           fetch(`${s3Bucket}Photo%3A+${numbers}`, {
             headers: {
@@ -44,6 +71,8 @@ class Profile extends Component {
             }
           })
           .then(result => {
+            // Set base64 encoded image into an img uri string.  This is one type of
+            // method that react native uses to decode base64 encoded images.
             let img = `data:image/png;base64,${result._bodyText}`;
             this.setState({ photos: [...this.state.photos, img], photoInfo: [...this.state.photoInfo, photo] });
           })
@@ -69,7 +98,12 @@ class Profile extends Component {
           </Text>
         </View>
         <View>
-          <Photos photos={this.state.photos} photoInfo={this.state.photoInfo} removePhoto={this.removePhoto.bind(this)} />
+          <Photos
+            photos={this.state.photos}
+            photoInfo={this.state.photoInfo}
+            removePhoto={this.removePhoto.bind(this)}
+            crowPhoto={this.crowPhoto.bind(this)}
+            />
         </View>
       </ScrollView>
     );

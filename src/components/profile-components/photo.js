@@ -15,15 +15,13 @@ class Photo extends Component {
           <Card.Actions>
             <Button
               style={styles.button}
-              onPress={() => {
-                Alert.alert('Lets scare some crows!')
-              }}
+              onPress={() => this.props.crowPhoto(this.props.name, this.props.base64Photo, this.props.index)}
               >
               Has Crow
             </Button>
             <Button
               style={styles.button}
-              onPress={() => this.props.removePhoto(this.props.name)}>
+              onPress={() => this.props.removePhoto(this.props.name, this.props.index)}>
               Delete
             </Button>
           </Card.Actions>
