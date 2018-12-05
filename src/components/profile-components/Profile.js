@@ -33,18 +33,18 @@ class Profile extends Component {
     // Gets Photo Keys from S3 bucket
     Storage.list('')
       .then(res => {
-
         // Get last char of photo key from List
         let photos = res.map(photo => {
-          let lastChar = photo.key[photo.key.length - 1];
+          const re = /[0-9]/g;
+          let numbers = photo.key.match(re).join('');
           // Use the last char to complete the fetch URL
-          fetch(`${s3Bucket}Photo%3A+${lastChar}`, {
+          fetch(`${s3Bucket}Photo%3A+${numbers}`, {
             headers: {
               'Accept': 'application/json'
             }
           })
           .then(result => {
-            let img = `data:image/png;base64,${result._bodyText}`
+            let img = `data:image/png;base64,${result._bodyText}`;
             this.setState({ photos: [...this.state.photos, img], photoInfo: [...this.state.photoInfo, photo] });
           })
           .catch(err => console.log(err))
