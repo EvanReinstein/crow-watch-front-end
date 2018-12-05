@@ -33,11 +33,11 @@ class Profile extends Component {
     // Gets Photo Keys from S3 bucket
     Storage.list('')
       .then(res => {
-        // Get last char of photo key from List
+        // Get numbers from the photo key property
         let photos = res.map(photo => {
           const re = /[0-9]/g;
           let numbers = photo.key.match(re).join('');
-          // Use the last char to complete the fetch URL
+          // Use the numbers to complete the fetch URL
           fetch(`${s3Bucket}Photo%3A+${numbers}`, {
             headers: {
               'Accept': 'application/json'
