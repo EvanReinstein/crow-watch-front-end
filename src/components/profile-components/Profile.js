@@ -63,7 +63,6 @@ class Profile extends Component {
         let photos = res.map(photo => {
           const re = /[0-9]/g;
           let numbers = photo.key.match(re).join('');
-          console.log(numbers);
           // Use the numbers to complete the fetch URL
           fetch(`${s3Bucket}Photo%3A+${numbers}`, {
             headers: {
