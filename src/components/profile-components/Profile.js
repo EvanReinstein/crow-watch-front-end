@@ -23,7 +23,11 @@ class Profile extends Component {
     Storage.remove(input)
     .then(result => console.log(result))
     .catch(err => console.log(err));
+    let photoInfo = this.state.photoInfo;
+    let newPhotoInfo = photoInfo.filter(photo => photo.key !== input)
+    this.setState({ photoInfo: newPhotoInfo })
   }
+
 
   fetchData = () => {
     // Gets Photo Keys from S3 bucket
