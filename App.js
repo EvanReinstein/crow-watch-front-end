@@ -48,20 +48,10 @@ class App extends React.Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
-
 AppRegistry.registerComponent('Crow Watch', () => App);
 
 export default withAuthenticator(App,
   includeGreetings = true,
   authenticatorComponents = [],
   federated = null,
-  theme = {myTheme}
-);
+  theme = {myTheme});
