@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Image, StyleSheet, ScrollView } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView, Alert } from 'react-native';
 import { s3Bucket, identityPOOLID } from '../../../config/config';
 import Photos from './photos';
 
@@ -19,8 +19,10 @@ class Profile extends Component {
     photoInfo: []
   }
 
-  removePhoto(e) {
-    console.log(e.target);
+  removePhoto(input) {
+    Storage.remove(input)
+    .then(result => console.log(result))
+    .catch(err => console.log(err));
   }
 
   fetchData = () => {

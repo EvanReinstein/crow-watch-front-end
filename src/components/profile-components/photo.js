@@ -22,8 +22,9 @@ class Photo extends Component {
               Has Crow
             </Button>
             <Button
+              testID={this.props.name}
               style={styles.button}
-              onPress={this.props.removePhoto}>
+              onPress={() => this.props.removePhoto(this.props.name)}>
               Delete
             </Button>
           </Card.Actions>
