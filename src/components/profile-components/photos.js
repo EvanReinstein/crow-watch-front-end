@@ -10,7 +10,7 @@ class Photos extends Component {
           let photo = this.props.photos[index];
           let name = info.key;
           let date = info.lastModified.toDateString();
-          return <Photo name={name} photo={photo} date={date} key={index} />
+          return <Photo name={name} photo={photo} date={date} key={index} removePhoto={this.props.removePhoto} />
         })}
       </View>
     )

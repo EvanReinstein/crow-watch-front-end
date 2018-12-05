@@ -23,9 +23,7 @@ class Photo extends Component {
             </Button>
             <Button
               style={styles.button}
-              onPress={() => {
-                Alert.alert('You tapped this button');
-              }}>
+              onPress={this.props.removePhoto}>
               Delete
             </Button>
           </Card.Actions>

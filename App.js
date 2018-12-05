@@ -1,5 +1,5 @@
 import React from 'react';
-import { AppRegistry, StyleSheet, Text, View } from 'react-native';
+import { AppRegistry, StyleSheet, Text, View, Button } from 'react-native';
 import AppContainer from './AppContainer';
 
 // React Native Paper //
@@ -8,12 +8,11 @@ import {DefaultTheme, Appbar, Provider as PaperProvider } from 'react-native-pap
 // AWS AMPLIFY //
 ////////////////
 import { withAuthenticator } from 'aws-amplify-react-native'
-
+import { Auth } from 'aws-amplify';
 import Amplify from '@aws-amplify/core';
 import config from './aws-exports';
 Amplify.configure(config);
 ////////////////
-
 
 const defaultTheme = {
   ...DefaultTheme,
@@ -26,8 +25,10 @@ const defaultTheme = {
 };
 
 class App extends React.Component {
-  _onMore = () => {
-
+  logOut() {
+    Auth.signOut()
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
   }
 
   render() {
@@ -37,7 +38,10 @@ class App extends React.Component {
           <Appbar.Content
             title="Crow Watch"
           />
-          <Appbar.Action icon="more-vert" onPress={this._onMore} />
+        <Button
+          title='Sign Out'
+          onPress={this.logOut.bind(this)}
+          />
         </Appbar.Header>
 
         <AppContainer />
@@ -58,5 +62,5 @@ const styles = StyleSheet.create({
 AppRegistry.registerComponent('Crow Watch', () => App);
 
 export default withAuthenticator(App,
-  includeGreetings = false 
+  includeGreetings = false
 );

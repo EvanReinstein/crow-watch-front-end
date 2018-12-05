@@ -19,7 +19,11 @@ class Profile extends Component {
     photoInfo: []
   }
 
-  componentWillMount() {
+  removePhoto(e) {
+    console.log(e.target);
+  }
+
+  fetchData = () => {
     // Gets Photo Keys from S3 bucket
     Storage.list('')
       .then(res => {
@@ -40,9 +44,12 @@ class Profile extends Component {
           .catch(err => console.log(err))
           return 'Fetch complete!';
         });
-        console.log('>>>>>>>>>', this.state.photoInfo);
       })
       .catch(err => console.log(err));
+  }
+
+  componentWillMount() {
+    this.fetchData();
   }
 
   render() {
@@ -56,7 +63,7 @@ class Profile extends Component {
           </Text>
         </View>
         <View>
-          <Photos photos={this.state.photos} photoInfo={this.state.photoInfo} />
+          <Photos photos={this.state.photos} photoInfo={this.state.photoInfo} removePhoto={this.removePhoto.bind(this)} />
         </View>
       </ScrollView>
     );
