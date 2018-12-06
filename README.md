@@ -57,5 +57,8 @@ different S3 directory.  The save photo feature is specifically geared towards c
 Crow Watch is a very personal project and an app that I will be continuing to tweak and perfect
 until it has helped effectively prevent crows from picking at my picnic table succulents!
 
+- Crow Watch 1.0:
+  - Customize Auth UI
+  - Implement RefreshControl on Profile page 
 - Crow Watch 2.0: Access camera device's speaker in order to play a sound to disturb crows.
 - Crow Watch 3.0: Use neural networking to teach the app to recognize crows in the most recent photo taken and play the sound to scare them off automatically.
