@@ -29,11 +29,11 @@ Inspired by [Dave Ceddia's](https://daveceddia.com/) post about [pulled pork and
 #### Local Installation
 1. Get Expo Client from the App Store on your phone in order to view it in development.
 2. Make sure to have an AWS account
-  - This will allow you to configure your own S3 storage...sorry you can't use mine quite yet!
+    - This will allow you to configure your own S3 storage...sorry you can't use mine quite yet!
 3. Git clone backend from above
- - Make sure to change IP address to localhost or local IP in Back End App.js:46
- - `npm i` in order to install dependencies
- - `amplify configure` in order to configure your amplify User and S3
+    - Make sure to change IP address to localhost or local IP in Back End App.js:46
+    - `npm i` in order to install dependencies
+    - `amplify configure` in order to configure your amplify User and S3
 4. Git clone front end
- - `npm i` in order to install dependencies
- - Configure the front end to match the back end's S3.  This can be done in Profile.js
+    - `npm i` in order to install dependencies
+    - Configure the front end to match the back end's S3.  This can be done in Profile.js
