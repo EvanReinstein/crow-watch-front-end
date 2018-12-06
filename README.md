@@ -1,7 +1,7 @@
 # Crow Watch
-#### An App for Watching My Deck
+## An App for Watching My Deck
 
-##But Why?
+#### But Why?
 
 After moving to Oakland, CA from NYC, my wife and I were overjoyed to
 have an apartment with outdoor space.  Soon enough we had a smattering of
