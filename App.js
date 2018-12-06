@@ -17,10 +17,6 @@ Amplify.configure(config);
 
 // Theme Override //
 ///////////////////
-const MyButton = Object.assign({}, AmplifyTheme.button, { backgroundColor: '#A7B1B2' });
-const myNavBar = Object.assign({}, AmplifyTheme.navBar, { marginTop: 35, padding: 15, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'});
-const myTheme = Object.assign({}, AmplifyTheme, { button: MyButton, navBar: myNavBar });
-
 const defaultTheme = {
   ...DefaultTheme,
   roundness: 4,
@@ -30,6 +26,10 @@ const defaultTheme = {
     accent: '#A9F6FF',
   }
 };
+const MyButton = Object.assign({}, AmplifyTheme.button, { backgroundColor: '#A7B1B2' });
+const myNavBar = Object.assign({}, AmplifyTheme.navBar, { marginTop: 35, padding: 15, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center'});
+const myTheme = Object.assign({}, AmplifyTheme, { button: MyButton, navBar: myNavBar });
+console.log(myTheme);
 
 class App extends React.Component {
   logOut() {
