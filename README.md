@@ -1,5 +1,7 @@
 # Crow Watch 1.0
 ## An App for Watching My Deck
+Check out a basic prototype [HERE](https://www.figma.com/proto/ZFPJCIvVZle8H7gRxOmZkJ01/Original-Mockup?node-id=1%3A2&scaling=scale-down).
+
 
 #### But Why?
 
@@ -25,17 +27,18 @@ different S3 directory.  The save photo feature is specifically geared towards c
 - React
 - React Native
 - React Native Paper
+- Amazon Web Services - S3
 - AWS Amplify
 - AWS Amplify React Native
 
 ##### Back End
 - Link to Back End Repo: [Crow Watch Back End](https://github.com/EvanReinstein/crow-watch-5000)
-- Amazon Web Services - S3
-  - AWS Amplify
-  - AWS Amplify React Native
-  - Expo
-  - React
-  - React Native
+- Amazon Web Services - S3, Cognito
+- AWS Amplify
+- AWS Amplify React Native
+- Expo
+- React
+- React Native
 
 ***
 
@@ -59,6 +62,6 @@ until it has helped effectively prevent crows from picking at my picnic table su
 
 - Crow Watch 1.0:
   - Customize Auth UI
-  - Implement RefreshControl on Profile page 
+  - Implement RefreshControl on Profile page
 - Crow Watch 2.0: Access camera device's speaker in order to play a sound to disturb crows.
 - Crow Watch 3.0: Use neural networking to teach the app to recognize crows in the most recent photo taken and play the sound to scare them off automatically.
