@@ -12,7 +12,7 @@ class Home extends Component {
           <View style={styles.container}>
             <Text style={styles.textSubHeader}>About</Text>
             <Text style={styles.textContainer}>After moving to Oakland, CA in the summer of 2017 I was lucky enough to
-              find an apartment with a beautiful deck and view of the Berkely, Oakland, and Montclair
+              find an apartment with a beautiful deck and view of the Berkeley, Oakland, and Montclair
               Hills.  I got to work right away....
             </Text>
             <Image source={require('../../assets/jade.png')} style={styles.plantPhoto} />
